@@ -1,16 +1,39 @@
 import React, { useState } from 'react';
 import './NftCard.css';
+import WalletModal from '../walletPage/walletModal';
 
-interface NftCardProps {
+interface nfts {
   imgUrl: string;
   title: string;
   desc: string;
-}
+  }
 
-const NftCard: React.FC<NftCardProps> = ({ imgUrl, title,desc}) => {
+
+const NftCard: React.FC<nfts> = ({ imgUrl, title,desc }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  return (
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nfts, setNft] = useState<nfts[]>([]); // Changed to an array to handle multiple NFTs
+nfts.push({ imgUrl, title, desc });
+  function handleBuy(nfts) { 
+    
+    const a = nfts
+    const b = <WalletModal nfts={[a]} isOpen={isModalOpen} onRequestClose={handleCloseModal} walletInfo={{ address: 'STV6Q...4Z7WD', balance: 0.129 }} />
+console.log(a);
+try {
+  
+} catch (error) {
+  console.log(error);
+}
+    return b;
+  }
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
+  const [walletInfo, setWalletInfo] = useState({
+    address: 'STV6Q...4Z7WD',
+    balance: '0.129 BTC',
+  });
+    return (
     <div
       className="nft-card"
       onMouseEnter={() => setIsHovered(true)}
@@ -20,7 +43,7 @@ const NftCard: React.FC<NftCardProps> = ({ imgUrl, title,desc}) => {
       {isHovered ? (
         <div className="hover-overlay">
           <a href="./about">
-          <button className="go-collection-button" >Buy</button>
+          <button className="go-collection-button" onClick={()=>handleBuy(nfts)} >Buy</button>
           </a>
         </div>
       ) : (

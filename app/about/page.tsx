@@ -11,7 +11,6 @@ export default function Home() {
         
       
       <div>
-      <Wallet/>
       
     <PageContent />
       </div>

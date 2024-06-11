@@ -7,6 +7,7 @@ import Wallet from "./wallet";
 import { createContext, useState } from "react";
 
 
+const nfts: any = null;
 
 export default function Home() {
   return (

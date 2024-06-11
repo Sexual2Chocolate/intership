@@ -1,30 +1,23 @@
 'use client'
-import { Link } from 'react-router-dom';
-import { useNavigation } from 'next/navigation';
 import { useRouter } from 'next/navigation'
-import { redirect } from 'next/navigation'
-import { useContext, useState } from 'react';
+import { useState } from 'react' ;
 import WalletModal from './walletPage/walletModal';
 import handleWalletButtonClick from './walletPage/page';
 
 
 export default function ClientComponent() {
-
     const [isModalOpen, setIsModalOpen] = useState(false);
-
+    //const [nfts, setNfts] = useState<{ imgUrl: string; title: string; desc: string }[]>([]);
     const [walletInfo, setWalletInfo] = useState({
       address: 'STV6Q...4Z7WD',
       balance: '0.129 BTC',
       nfts: []
+
     });
- const handleBuyNft = (nft) => {
-    setWalletInfo((prevInfo) => ({
-      ...prevInfo,
-      nfts: [...prevInfo.nfts, nft]
-    }));
-  };
+
     const router = useRouter()
 
+   
    
 
 
@@ -37,14 +30,13 @@ export default function ClientComponent() {
       setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
     }
   };
-function Name() {
-  let name = "Connect Wallet";
-  if (document.cookie === 'Boolean=true') {
-    name = "Wallet";
-  return name;
+  function Name() {
+    let name = "Connect Wallet";
+    if (typeof document !== 'undefined' && document.cookie === 'Boolean=true') {
+      name = "Wallet";
+    }
+    return name;
   }
-return name;
-}
 
 
   return (
@@ -60,8 +52,8 @@ return name;
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         walletInfo={walletInfo} 
-        
-         />
+        nfts={[]}
+             />
 
     </main>
   );

@@ -1,6 +1,6 @@
 'use client'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Collection from './about/Collection';
+import Collection from './test';
 import { useEffect } from 'react'
 
 import { Slide } from 'react-slideshow-image';
@@ -10,10 +10,19 @@ import Slideshow from './Slideshow';  // Import the Slideshow component
 import  NftCard  from './Nftcard';  // Import the NftCard component
 import Footer from './about/Footer';
 const PageContent = () => {
-  onload = () => {
-    document.cookie = `Boolean=false `   ;
-  } 
-    const imageData = [
+
+
+useEffect(() => {
+  if(!document.cookie.includes('Boolean')) {
+    document.cookie = `Boolean=false`;
+  }
+    
+  }, []); 
+  
+  
+  
+  
+  const imageData = [
     {
       imgUrl:
         "https://images.nightcafe.studio/jobs/ncLCr9cLdxrDwtW2IVSL/ncLCr9cLdxrDwtW2IVSL.jpg?tr=w-1600,c-at_max",
@@ -44,9 +53,40 @@ const PageContent = () => {
     },
   ];
 
-  const slideImages = imageData.map((image) => image.imgUrl);
+  const collections = [
+    {
+      title: 'Collection',
+      name: 'Night Sky',
+      description: 'Lorem ipsum dolor sit amet, consectetur adicing elit, sed do eiusmod tempor.',
+      authorImage: 'path-to-profile-picture',
+      authorName: 'Léa Jacquot',
+      authorRole: 'Artist',
+      collectionImage: 'path-to-collection-image'
+    },
+    {
+      title: 'Collection',
+      name: 'Night Sky',
+      description: 'Lorem ipsum dolor sit amet, consectetur adicing elit, sed do eiusmod tempor.',
+      authorImage: 'path-to-profile-picture',
+      authorName: 'Léa Jacquot',
+      authorRole: 'Artist',
+      collectionImage: 'path-to-collection-image'
+    },
+    {
+      title: 'Collection',
+      name: 'Night Sky',
+      description: 'Lorem ipsum dolor sit amet, consectetur adicing elit, sed do eiusmod tempor.',
+      authorImage: 'path-to-profile-picture',
+      authorName: 'Léa Jacquot',
+      authorRole: 'Artist',
+      collectionImage: 'path-to-collection-image'
+    },
+    // Add more collection objects as needed
+  ];
+  
+ // const slideImages = imageData.map((image) => image.imgUrl);
 
-
+const slideImages = collections.map(  (collection) => collection.collectionImage);
 
 
   return (
@@ -59,7 +99,7 @@ const PageContent = () => {
           <text className=" font-semibold text-2xl">Marketplace</text>
         </div>
         <div className='slider-frame'>
-          <Slideshow images={slideImages} />
+        <Slideshow collections={collections} />
         </div>
       </div>
 
