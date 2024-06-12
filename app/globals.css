@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+#rcorners2 {
+  position: relative;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 5px; 
+  width: 140px;
+  height: 40px;  
+  float: right;
+  justify-content: center;
+  display: flex ;
+  align-items: center;
+}
+body {
+  color: rgb(0, 0, 0);
+  background: linear-gradient(
+      to bottom,
+      transparent,
+    )
+color( white)
+
+
+
+}
+.slider-frame {
+overflow: hidden;
+  width: 1350px;
+  height: 360px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+@-webkit-keyframes slide_animations {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: 1200px;
+  }
+  45% {
+    left: -1200px;
+  }
+  50% {
+    left: 2400px;
+  }
+  70% {
+    left: 2400px;
+  }
+  75% {
+    left: 3600px;
+  }
+  95% {
+    left: 3600px;
+  }
+  100% {
+    left: 0;
+  }
+} 
+
+.slide-images {
+  position: relative;
+  width: 4800px;
+  -webkit-animation-name: slide_animations;
+  -webkit-animation-duration: 20s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-play-state: running;
+
+}
+.img-container {
+  float: left;
+  width: 1200px;
+  height: 800px;
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.align-bottom {
+  display: flex;
+  align-items: flex-end;
+}

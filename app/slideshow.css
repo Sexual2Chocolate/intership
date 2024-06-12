@@ -1,0 +1,53 @@
+/* slideshow.css */
+
+.slideshow-container {
+    position: relative;
+    max-width: auto;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: none;
+    
+  }
+  
+  .slides.active {
+    display: block;
+    animation: fade 1.5s;
+  }
+  
+  @keyframes fade {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+  }
+  
+  .progress-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+  }
+  
+  .progress-bar {
+    
+    flex: 1;
+    height: 5px;
+    background-color: #cbc3c3;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  
+  }
+ 
+  .progress-bar.active {
+    
+    animation: fill 100s linear forwards;
+    background-color: #4f4f4f;
+
+  }
+  
+  
+  @keyframes fill {
+    from { width: 0%; }
+    to { width: 50%; }
+  }
